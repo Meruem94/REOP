@@ -229,7 +229,7 @@ public class AppComponent {
 
 
         /*
-        ---------- H1 SENDER ----------
+        ---------- H2 SENDER ----------
          */
         log.info("Conf h2->h1");
         //s1-s3-s4-s2-s1
@@ -378,6 +378,151 @@ public class AppComponent {
                 "of:0000000000000003",
                 3,
                 5)
+                .build());
+
+
+         /*
+        ---------- H3 SENDER ----------
+         */
+        log.info("Conf h3->h1");
+        //s2-s3-s4-s1
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:01",
+                "of:0000000000000002",
+                1,
+                5)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:01",
+                "of:0000000000000003",
+                5,
+                4)
+                .build());
+
+        log.info("Conf h3->h2");
+        //s2-s4-s3-s1
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:02",
+                "of:0000000000000002",
+                1,
+                4)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:02",
+                "of:0000000000000004",
+                3,
+                4)
+                .build());
+
+        log.info("Conf h3->h4");
+        //s2-s4-s3-s1
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:04",
+                "of:0000000000000002",
+                1,
+                4)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:04",
+                "of:0000000000000004",
+                3,
+                4)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:04",
+                "of:0000000000000003",
+                4,
+                3)
+                .build());
+
+        log.info("Conf h3->h5");
+        //s2-s4-s1-s3
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:05",
+                "of:0000000000000002",
+                1,
+                4)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:05",
+                "of:0000000000000004",
+                3,
+                5)
+                .build());
+
+        log.info("Conf h3->h6");
+        //s2-s1-s4-s3
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:06",
+                "of:0000000000000002",
+                1,
+                3)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:06",
+                "of:0000000000000001",
+                3,
+                5)
+                .build());
+
+        log.info("Conf h3->h7");
+        //s2-s1-s3-s4
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:07",
+                "of:0000000000000002",
+                1,
+                3)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:07",
+                "of:0000000000000001",
+                3,
+                4)
+                .build());
+
+        log.info("Conf h3->h8");
+        //
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:08",
+                "of:0000000000000002",
+                1,
+                5)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:08",
+                "of:0000000000000001",
+                5,
+                3)
                 .build());
 
     }
