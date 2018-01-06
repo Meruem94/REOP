@@ -151,7 +151,7 @@ public class AppComponent {
                 .build());
 
         log.info("Conf h1->h5");
-        //s1-s2-s4-s4
+        //s1-s2-s4-s3
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:01",
