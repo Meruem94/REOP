@@ -76,6 +76,9 @@ public class AppComponent {
 
         appId = coreService.registerApplication("org.upmc.reop.groupe6.app");
 
+        /*
+        ---------- H1 SENDER ----------
+         */
         log.info("Conf h1->h2");
 
         selectorBuilder = DefaultTrafficSelector.builder()
@@ -650,7 +653,606 @@ public class AppComponent {
                 .makePermanent();
 
         flowRuleService.applyFlowRules(builder.build());
-        
+
+
+
+                /*
+        ---------- H2 SENDER ----------
+         */
+        log.info("Conf h2->h1");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:01"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:01"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:01"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:01"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:01"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(1))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h3");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:03"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:03"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:03"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:03"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(1))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h4");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:04"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:04"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:04"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:04"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(2))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h5");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:05"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:05"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:05"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:05"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(1))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h6");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:06"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:06"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:06"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:06"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(2))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h7");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:07"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(3))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:07"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:07"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:07"))
+                .matchInPort(PortNumber.portNumber(4));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(1))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        log.info("Conf h2->h8");
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:08"))
+                .matchInPort(PortNumber.portNumber(2));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000001"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:08"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(5))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000003"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:08"))
+                .matchInPort(PortNumber.portNumber(5));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(4))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000002"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
+        selectorBuilder = DefaultTrafficSelector.builder()
+                .matchEthType(Ethernet.TYPE_IPV4)
+                .matchEthSrc(MacAddress.valueOf("00:00:00:00:00:02"))
+                .matchEthDst(MacAddress.valueOf("00:00:00:00:00:08"))
+                .matchInPort(PortNumber.portNumber(3));
+
+        treatment = DefaultTrafficTreatment.builder()
+                .setOutput(PortNumber.portNumber(2))
+                .immediate();
+
+        builder = DefaultFlowRule.builder()
+                .fromApp(appId)
+                .forDevice(DeviceId.deviceId("of:0000000000000004"))
+                .withPriority(500)
+                .withSelector(selectorBuilder.build())
+                .withTreatment(treatment.build())
+                .makePermanent();
+
+        flowRuleService.applyFlowRules(builder.build());
+
     }
 
     @Deactivate
