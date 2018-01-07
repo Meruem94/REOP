@@ -343,20 +343,20 @@ public class AppComponent {
                 .build());
 
         log.info("Conf h2->h7");
-        //s1-s2-s3-s4
+        //s1-s3-s2-s4
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:02",
                 "00:00:00:00:00:07",
                 "of:0000000000000001",
                 2,
-                3)
+                4)
                 .build());
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:02",
                 "00:00:00:00:00:07",
-                "of:0000000000000002",
+                "of:0000000000000003",
                 3,
                 5)
                 .build());
@@ -430,6 +430,14 @@ public class AppComponent {
                 "00:00:00:00:00:04",
                 "of:0000000000000002",
                 1,
+                5)
+                .build());
+
+        flowRuleService.applyFlowRules(circuitHamiltonienRule(
+                "00:00:00:00:00:03",
+                "00:00:00:00:00:04",
+                "of:0000000000000003",
+                5,
                 4)
                 .build());
 
@@ -437,16 +445,8 @@ public class AppComponent {
                 "00:00:00:00:00:03",
                 "00:00:00:00:00:04",
                 "of:0000000000000004",
-                3,
-                4)
-                .build());
-
-        flowRuleService.applyFlowRules(circuitHamiltonienRule(
-                "00:00:00:00:00:03",
-                "00:00:00:00:00:04",
-                "of:0000000000000003",
                 4,
-                3)
+                5)
                 .build());
 
         log.info("Conf h3->h5");
