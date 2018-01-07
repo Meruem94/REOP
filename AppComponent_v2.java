@@ -653,25 +653,25 @@ public class AppComponent {
                 .build());
 
         log.info("Conf h4->h8");
-        //s2-s1-s3-s4
+        //s2-s3-s1-s4
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:04",
                 "00:00:00:00:00:08",
                 "of:0000000000000002",
                 2,
-                3)
+                5)
                 .build());
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:04",
                 "00:00:00:00:00:08",
-                "of:0000000000000001",
-                3,
-                4)
+                "of:0000000000000003",
+                5,
+                3)
                 .build());
 
-   /*
+         /*
         ----- H5 SENDER -----
          */
 
