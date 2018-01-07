@@ -120,14 +120,14 @@ public class AppComponent {
                 "00:00:00:00:00:03",
                 "of:0000000000000001",
                 1,
-                4)
+                5)
                 .build());
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:01",
                 "00:00:00:00:00:03",
-                "of:0000000000000003",
-                3,
+                "of:0000000000000004",
+                5,
                 4)
                 .build());
 
