@@ -208,20 +208,20 @@ public class AppComponent {
                 .build());
 
         log.info("Conf h1->h8");
-        //s1-s2-s3-s4
+        //s1-s3-s2-s4
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:01",
                 "00:00:00:00:00:08",
                 "of:0000000000000001",
                 1,
-                3)
+                4)
                 .build());
 
         flowRuleService.applyFlowRules(circuitHamiltonienRule(
                 "00:00:00:00:00:01",
                 "00:00:00:00:00:08",
-                "of:0000000000000002",
+                "of:0000000000000003",
                 3,
                 5)
                 .build());
